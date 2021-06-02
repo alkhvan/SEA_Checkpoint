@@ -1,15 +1,16 @@
 package de.telekom.sea.javaChallenge.third_part_loops;
 
 public class Loops_part3 {
-
-    public static void main (String[] args) {
+      public static void main (String[] args) {
         System.out.println("first loop");
-     //   loop1(i);
+        loop1();
         System.out.println("second loop");
+        loop2();
+
 
     }
-    public void loop1 (int i){
-        i = 0;
+    public static void loop1(){
+         int i = 0;
         //1st loop
         while (i < 8) {
             System.out.println(i);
@@ -17,8 +18,8 @@ public class Loops_part3 {
 
         }
     }
-    public void loop2 (int i){
-        i = 0;
+    public static void loop2 (){
+        int i = 0;
         //2nd loop
         do {System.out.println(i);
             i++;}
