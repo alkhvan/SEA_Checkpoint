@@ -1,0 +1,48 @@
+package de.telekom.sea.javaChallenge;
+
+public class RunApplication extends  BaseObject {
+    public static final String ANSI_BLUE = "\u001B[34m";
+    public static final String ANSI_GREEN = "\u001B[32m";
+
+    public void test(){
+    PersonenSchlange personenSchlange = new PersonenSchlange();
+    // adding 8 instance of persons with constructor
+    PersonImpl person1 = new PersonImpl("Anna","Banana");
+    PersonImpl person2 = new PersonImpl("Annita","Babanita");
+    PersonImpl person3 = new PersonImpl("Olle","Lukkoye");
+    PersonImpl person4 = new PersonImpl("Mars","Nutakoe");
+    PersonImpl person5 = new PersonImpl("Cherry","Orange");
+    PersonImpl person6 = new PersonImpl("Marry","Birne");
+    PersonImpl person7 = new PersonImpl("Anton","Lalala");
+    PersonImpl person8 = new PersonImpl("Dolly","Lololo");
+    //check if list is empty
+    if (personenSchlange.empty())
+        System.out.println("List ist empty.");
+    else System.out.println("List is not empty");
+    //remove persons beginning from the first person
+    System.out.println("     ");
+    personenSchlange.add(person1);
+    personenSchlange.add(person2);
+    personenSchlange.add(person3);
+    personenSchlange.add(person4);
+    personenSchlange.add(person5);
+    personenSchlange.add(person6);
+    personenSchlange.add(person7);
+    personenSchlange.add(person8);
+    System.out.println("     ");
+
+    System.out.println("Persons count: " +ANSI_BLUE+ personenSchlange.size() + "."+ ANSI_BLUE);
+    System.out.println("     ");
+    personenSchlange.head();
+    System.out.println("     ");
+
+    personenSchlange.remove();
+    System.out.println("     ");
+
+    System.out.println("Persons count: " +ANSI_BLUE+ personenSchlange.size() + "."+ ANSI_BLUE);
+    System.out.println("     ");
+
+
+}
+
+    }
