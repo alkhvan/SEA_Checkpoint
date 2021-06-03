@@ -1,7 +1,8 @@
 package de.telekom.sea.javaChallenge;
 
 public class BaseObject extends Object {
- //   protected Object myList;
+    protected boolean vorname;
+    //   protected Object myList;
      private Object parent;
      private static long idCounter =0;
      private long id;
