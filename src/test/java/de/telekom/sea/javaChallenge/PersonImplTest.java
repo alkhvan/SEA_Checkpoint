@@ -4,6 +4,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.function.BooleanSupplier;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -144,19 +146,86 @@ public class PersonImplTest {
         cut.empty(); //pre-condition check if list is empty
         PersonImpl person1 = new PersonImpl("Anna","Banana");
         cut.add(person1);
-        IPerson ip = cut.head();
-        assertSame(person1, ip);
+        IPerson result = cut.head();
+        assertNotNull (result);
+        assertSame(result,person1);
     }
 
     @Test
         //8 test
     void head_empty_test() {
-        // check first person
+        // check if there is no person
+        cut.empty(); //pre-condition check if list is empty
+        IPerson result = cut.head();
+        assertSame(null, result);
+        assertNull (result);
+    }
+
+    @Test
+        //9 test
+    void remove_one_person_test() {
+        // check that person could be added and then could be deleted
         cut.empty(); //pre-condition check if list is empty
 
-        IPerson ip = cut.head();
-        assertSame(null, ip);
+        PersonImpl person1 = new PersonImpl("Olle","Lukkoye");
+
+        try {cut.add(person1);
+            //       cut.add(person9);
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+        }
+        IPerson result = cut.remove();
+        assertTrue((BooleanSupplier) result);
+        int size = cut.size();
+        assertEquals(0, size);
     }
+
+    @Test
+    //10 test
+    void search_failed_onePerson_test() {
+
+        PersonImpl person1 = new PersonImpl("Anna","Banana");
+        PersonImpl person2 = new PersonImpl("Annita","Babanita");
+        PersonImpl person3 = new PersonImpl("Gleb","Piwo");
+        cut.add(person2);
+        cut.add(person1);
+     //   IPerson result = cut.search(person3);
+        assertThrows(NullPointerException.class,()->{cut.search(person3);});
+     //   assertEquals(result,person2);
+    }
+
+    @Test
+        //11 test
+    //check that person could be found
+    void search_onePerson_test() {
+
+        PersonImpl person1 = new PersonImpl("Anna","Banana");
+        PersonImpl person2 = new PersonImpl("Annita","Babanita");
+        PersonImpl person3 = new PersonImpl("Gleb","Piwo");
+        cut.add(person2);
+        cut.add(person1);
+        cut.add(person3);
+        IPerson result = cut.search(person3);
+        assertEquals(result,person3);
+    }
+
+    @Test
+        //12 test
+        //check  size
+    void size_test (){
+        PersonImpl person1 = new PersonImpl("Anna","Banana");
+        PersonImpl person2 = new PersonImpl("Annita","Babanita");
+        PersonImpl person3 = new PersonImpl("Gleb","Piwo");
+        cut.add(person2);
+        cut.add(person1);
+        cut.add(person3);
+        int result = cut.size();
+        assertNotNull(result);
+
+
+    }
+
+
 
 
     @AfterEach

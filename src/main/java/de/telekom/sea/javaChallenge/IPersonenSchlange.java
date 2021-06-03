@@ -6,6 +6,6 @@ public interface IPersonenSchlange {
     public IPerson remove();
     public void reset();
     public boolean empty();
-    public int search(IPerson person);
+    public IPerson search(IPerson person);
 
 }

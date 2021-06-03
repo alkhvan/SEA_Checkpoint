@@ -1,7 +1,5 @@
 package de.telekom.sea.javaChallenge;
 
-import java.util.Scanner;
-
 public class PersonenSchlange extends  BaseObject implements IPersonenSchlange {
     private int LENGTH = 8;
     private Object[] personsList = new Object[LENGTH];
@@ -49,7 +47,7 @@ public class PersonenSchlange extends  BaseObject implements IPersonenSchlange {
         if (personsList[i] != null) {
             System.out.println(ANSI_BLACK + "The first person in the list is: " + p.getVorname() + " " + p.getNachname() + ANSI_BLACK);
         }
-        return null;
+        return p;
     }
 
     @Override
@@ -90,7 +88,7 @@ public class PersonenSchlange extends  BaseObject implements IPersonenSchlange {
     }
 
     @Override
-    public int search(IPerson person) {
+    public IPerson search(IPerson person) {
         int i = 0;
         int result;
         String vorname = person.getVorname();
@@ -103,8 +101,8 @@ public class PersonenSchlange extends  BaseObject implements IPersonenSchlange {
             i++;
 
         } while (i < personsList.length);
-      result = -1;
-      return result;
+
+      return person;
     }
 
 

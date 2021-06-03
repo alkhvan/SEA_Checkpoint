@@ -61,7 +61,8 @@ public class RunApplication extends  BaseObject {
     personenSchlange.head();
     System.out.println("     ");
     //remove persons beginning from the first person
-    personenSchlange.remove();
+    if (personenSchlange.remove()==null)
+        System.out.println("The queue is empty! Persons could not be removed!");
     System.out.println("     ");
 
     System.out.println("Persons count: " +ANSI_BLUE+ personenSchlange.size() + "."+ ANSI_BLUE);
