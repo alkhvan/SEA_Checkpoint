@@ -5,7 +5,6 @@ import java.util.Scanner;
 public class PersonenSchlange extends  BaseObject implements IPersonenSchlange {
     private int LENGTH = 8;
     private Object[] personsList = new Object[LENGTH];
-    public static final String ANSI_BLUE = "\u001B[34m";
     public static final String ANSI_GREEN = "\u001B[32m";
     public static final String ANSI_RED = "\u001B[31m";
     public static final String ANSI_BLACK = "\u001B[30m";
@@ -21,9 +20,10 @@ public class PersonenSchlange extends  BaseObject implements IPersonenSchlange {
     @Override
     public void add(IPerson person) {
         // 1: check if array was not overflowed
-        if (size() == personsList.length) {
+        if (size() == personsList.length)
+        {
             System.out.println(ANSI_RED + "Sorry! No more places in the queue. There are only: " + personsList.length + " places" + ANSI_RED);
-            throw new RuntimeException("RuntimeException. Please check count of already added persons");
+           throw new RuntimeException("RuntimeException. Please check count of already added persons");
         }
         //2: check if person was already added
         PersonImpl p = (PersonImpl) person;
@@ -39,6 +39,7 @@ public class PersonenSchlange extends  BaseObject implements IPersonenSchlange {
             System.out.println(ANSI_GREEN + p.getVorname() + " " + p.getNachname() + ANSI_GREEN + ANSI_BLACK + " added to the list under №" + size() + "." + ANSI_BLACK);
             //  return true;
         }
+        else System.out.println("Person "+p.getVorname()+" could not be added!");
     }
 
     @Override
@@ -55,6 +56,12 @@ public class PersonenSchlange extends  BaseObject implements IPersonenSchlange {
     public IPerson remove() {
         int i = 0;
         int j =0;
+
+//        if (personsList[i] == null) {
+//            System.out.println("Sorry! Nothing to delete");
+//            throw new RuntimeException("RuntimeException. Please check list of persons");
+//        }
+        if (personsList.length>0){
         for(j=0;j<(personsList.length);j++) {
             while (i != (personsList.length)) {
                 IPerson p = (IPerson) personsList[i];
@@ -63,7 +70,8 @@ public class PersonenSchlange extends  BaseObject implements IPersonenSchlange {
             }
             personsList[j] = null;
 
-        }
+        }}
+        else System.out.println("Sorry! Nothing to delete");
         return null;
     }
 
@@ -84,6 +92,7 @@ public class PersonenSchlange extends  BaseObject implements IPersonenSchlange {
     @Override
     public int search(IPerson person) {
         int i = 0;
+        int result;
         String vorname = person.getVorname();
         String nachname = person.getNachname();
         do {
@@ -94,7 +103,8 @@ public class PersonenSchlange extends  BaseObject implements IPersonenSchlange {
             i++;
 
         } while (i < personsList.length);
-      return 0;
+      result = -1;
+      return result;
     }
 
 
