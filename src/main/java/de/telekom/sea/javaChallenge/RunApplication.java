@@ -85,6 +85,17 @@ public class RunApplication extends  BaseObject {
         System.out.println("     ");
         System.out.println("Persons count: " +ANSI_BLUE+ personenSchlange.size() + "."+ ANSI_BLUE);
         System.out.println("     ");
+
+
+        PersonImpl person1 = new PersonImpl("Anna","Banana");
+        PersonImpl person2 = new PersonImpl("Annita","Babanita");
+        PersonImpl person3 = new PersonImpl("Olle","Lukkoye");
+        personenSchlange.add(person1);
+        personenSchlange.add(person2);
+        personenSchlange.add(person3);
+        personenSchlange.remove();
+        System.out.println("Persons count: " +ANSI_BLUE+ personenSchlange.size() + "."+ ANSI_BLUE);
+
 }
 
 

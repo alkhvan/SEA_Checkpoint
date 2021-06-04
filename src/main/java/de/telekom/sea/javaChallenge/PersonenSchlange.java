@@ -53,23 +53,32 @@ public class PersonenSchlange extends  BaseObject implements IPersonenSchlange {
     @Override
     public IPerson remove() {
         int i = 0;
-        int j =0;
+        int j = 0;
 
 //        if (personsList[i] == null) {
 //            System.out.println("Sorry! Nothing to delete");
 //            throw new RuntimeException("RuntimeException. Please check list of persons");
 //        }
-        if (personsList.length>0){
-        for(j=0;j<(personsList.length);j++) {
-            while (i != (personsList.length)) {
+//        if (personsList.length>0){
+//        for(j=0;j<(personsList.length);j++) {
+//            while (i != (personsList.length)) {
+//                IPerson p = (IPerson) personsList[i];
+//                i++;
+//                System.out.println(ANSI_BLACK + "Person №" + i + " " + ANSI_BLACK + ANSI_RED + p.getVorname() + " " + p.getNachname() + ANSI_RED + ANSI_BLACK + " was removed from the list" + ANSI_BLACK);
+//            }
+//            personsList[j] = null;
+//        }else System.out.println("Sorry! Nothing to delete");
+        for (j = 0; j < (personsList.length); j++) {
+            int k = size();
+            while (i < k) {
                 IPerson p = (IPerson) personsList[i];
                 i++;
                 System.out.println(ANSI_BLACK + "Person №" + i + " " + ANSI_BLACK + ANSI_RED + p.getVorname() + " " + p.getNachname() + ANSI_RED + ANSI_BLACK + " was removed from the list" + ANSI_BLACK);
             }
             personsList[j] = null;
+        }
 
-        }}
-        else System.out.println("Sorry! Nothing to delete");
+
         return null;
     }
 
@@ -90,17 +99,22 @@ public class PersonenSchlange extends  BaseObject implements IPersonenSchlange {
     @Override
     public IPerson search(IPerson person) {
         int i = 0;
-        int result;
+
         String vorname = person.getVorname();
         String nachname = person.getNachname();
+        PersonImpl p = (PersonImpl) personsList[i];
+
         do {
-            PersonImpl p = (PersonImpl) personsList[i];
+
             if (vorname.equals(p.getVorname()) && nachname.equals(p.getNachname())) {
                 System.out.println("Person is found: " + p.getVorname() + " " + p.getNachname());
             }
             i++;
 
-        } while (i < personsList.length);
+        } while (i < size());
+//        if (!vorname.equals(p.getVorname()) && !nachname.equals(p.getNachname())) {
+//            System.out.println("Person is NOT found: " + p.getVorname() + " " + p.getNachname());
+//        }
 
       return person;
     }

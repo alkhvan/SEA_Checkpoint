@@ -127,6 +127,7 @@ public class PersonImplTest {
         cut.remove();
         int size = cut.size();
         assertEquals(0, size);
+        System.out.println("Persons count: " + cut.size() + ".");
     }
 
     @Test
@@ -174,10 +175,10 @@ public class PersonImplTest {
         } catch (RuntimeException e) {
             e.printStackTrace();
         }
-        IPerson result = cut.remove();
-        assertTrue((BooleanSupplier) result);
+        cut.remove();
         int size = cut.size();
         assertEquals(0, size);
+        System.out.println("Persons count: " + cut.size() + ".");
     }
 
     @Test
@@ -189,9 +190,10 @@ public class PersonImplTest {
         PersonImpl person3 = new PersonImpl("Gleb","Piwo");
         cut.add(person2);
         cut.add(person1);
-     //   IPerson result = cut.search(person3);
-        assertThrows(NullPointerException.class,()->{cut.search(person3);});
-     //   assertEquals(result,person2);
+  //      assertThrows(NullPointerException.class,()->{cut.search(person3);});
+        IPerson result = cut.search(person3);
+        assertNotEquals(result,person2);
+        assertNotEquals(result,person1);
     }
 
     @Test
